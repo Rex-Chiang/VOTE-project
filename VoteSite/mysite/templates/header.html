@@ -1,0 +1,20 @@
+<nav class='navbar navbar-inverse'>
+    <div class='container-fluid'>
+        <div class='navbar-header'>
+            <div class='navbar-brand' align=center>
+                VOTE
+            </div>
+        </div>
+        {% load account %}
+        <ul class='nav navbar-nav'>
+            <li class='active'><a href='/'><span class="glyphicon glyphicon-home"></span> 首頁</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'account_logout' %}"><span class="glyphicon glyphicon-log-out"></span> 登出</a></li>
+            {% else %}
+            <li><a href="{% url 'account_login' %}"><span class="glyphicon glyphicon-log-in"></span> 登入</a></li>
+            <li><a href="{% url 'account_signup' %}"><span class="glyphicon glyphicon-pencil"></span> 註冊</a></li>
+            {% endif %}
+            <li><a href='/admin'><span class="glyphicon glyphicon-wrench"></span> 後台管理</a></li>
+        </ul>
+    </div>
+</nav>

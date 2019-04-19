@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block title %} VOTE {% endblock %}
+{% block content %}
+<script>
+$(document).ready(function() {
+{% for pollitem in pollitems %}
+    $("#govote-{{pollitem.id}}").click(function(){
+        var pollitemid = $("#govote-{{pollitem.id}}").data("itemid");
+        $.ajax({
+            type: "GET",
+            url: "/govote/",
+            data: {
+                "pollitemid": pollitemid,
+                "pollid": {{pollid}},
+            },
+            success: function(votes) {
+                if (votes==0) {
+                    alert("無法投票");
+                } else {
+                    $("#pollitem-id-{{pollitem.id}}").html(votes);
+                }
+            }
+        });
+    });
+{% endfor %}
+});
+</script>
+<div class='container'>
+    <div class='panel panel-heading' align=center>
+        {% for message in messages %}
+            <div class='alert alert-{{ message.tags }}'>{{ message }}</div>
+        {% endfor %}
+            <h3><span class='glyphicon glyphicon-hand-right'></span> {{ poll.name }} <span class='glyphicon glyphicon-hand-left'></span></h3>
+    </div>
+</div>
+
+<div class='container'>
+{% for pollitem in pollitems %}
+    {% cycle "<div class='row'>" "" "" "" %}
+    <div class='col-sm-3'>
+        <div class='panel panel-default'>
+            <nav class='navbar navbar-inverse'>
+                <div class='navbar-brand' align=center>
+                <h4>{{ pollitem.name }}</h4>
+                </div>
+                {% if pollitem.image_url %}
+                    <img src='{{ pollitem.image_url }}' width='100%'>
+                {% else %}
+                    <img src='http://i.imgur.com/Ous4iGB.png' width='100%'>
+                {% endif %}
+
+
+                <h4>
+                <div class='navbar-brand'>
+                <a href='/vote/{{poll.id}}/{{pollitem.id}}' title='投票'>
+                    <span class='glyphicon glyphicon-check'>
+                    </span>
+                </a>
+                &nbsp;
+                目前票數 : <span id='pollitem-id-{{pollitem.id}}'>{{ pollitem.vote }}</span></div></h4><br/><br/><br/>
+                <button class='btn btn-success' id='govote-{{pollitem.id}}' data-itemid={{pollitem.id}}>投票</button>
+
+            </nav>
+        </div>
+    </div>
+    {% cycle "" "" "" "</div>" %}
+{% endfor %}
+</div>
+{% endblock %}
