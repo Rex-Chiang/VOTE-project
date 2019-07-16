@@ -30,7 +30,7 @@ The event name, total number of votes, and event release time are displayed on t
 
 To prevent malicious washing, each user can just vote per voting event only once per day.
 
-Because the AJAX is processed, the voting page can be updated in time without rearranging after the vote.
+Because the AJAX is processed, the voting page can be updated in time without reloading after the vote.
 
 **相關技術及工具:**
  * Python
