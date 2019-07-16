@@ -17,6 +17,7 @@
 投票後由於有處理 AJAX 因此投票頁面不需重新整理即可及時更新。
 
 **Introduction:**
+
 User can sign up the website or login with Facebook account.
 
 If user login with Facebook account, then show user picture at the home page.
