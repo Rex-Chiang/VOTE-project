@@ -18,19 +18,7 @@
 
 **Introduction:**
 
-User can sign up the website or login with Facebook account.
-
-If user login with Facebook account, then show user picture at the home page.
-
-After user login, user can choose voting events that they want to participate.
-
-Each poll is posted by the administrator and configured with voting options and release time.
-
-The event name, total number of votes, and event release time are displayed on the home page.
-
-To prevent malicious washing, each user can just vote per voting event only once per day.
-
-Because the AJAX is processed, the voting page can be updated in time without reloading after the vote.
+    User can sign up the website or login with Facebook account, and it will show user picture at the home page if user login with Facebook account. After user login, user can choose voting events that they want to participate. Each poll is posted by the administrator and configured with voting options and release time. Furthermore, the event name, total number of votes, and event release time are displayed on the home page. To prevent malicious washing, each user can just vote per voting event only once per day. Because the AJAX is processed, the voting page can be updated in time without reloading after the vote.
 
 **相關技術及工具:**
  * Python
